@@ -1,0 +1,17 @@
+<div id="imageContainer"></div>
+
+<script>
+    var imageFiles = JSON.parse('{{ image_files|tojson|safe }}');
+    var imageContainer = document.getElementById('imageContainer');
+    var currentImageIndex = 0;
+
+    function displayNextImage() {
+        if (currentImageIndex >= imageFiles.length) {
+            currentImageIndex = 0;
+        }
+        imageContainer.innerHTML = '<img src="' + imageFiles[currentImageIndex] + '">';
+        currentImageIndex++;
+    }
+
+    setInterval(displayNextImage, 3000);  // Change image every 3 seconds
+</script>
