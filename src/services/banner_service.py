@@ -23,8 +23,6 @@ def serve_banners(campaignId, csvId):
     campaign_banners = impressions['banner_id'].reset_index(drop=True).drop_duplicates()
 
     banner_data = build_banner_data(campaign_banners, campaignId, csvId)
-
-    print(banner_data)
     
     banners = select_banners(banner_data)
 
@@ -82,9 +80,6 @@ def build_banner_data(campaign_banners, campaignId, csvId):
 
     clicks = get_clicks(campaignId, csvId)
     conversions = get_conversions(csvId)
-
-    print(clicks)
-    print(conversions)
 
     for bannerId in campaign_banners:
         bannerData: BannerData = BannerData(bannerId, [], [], 0)
